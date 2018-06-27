@@ -1,60 +1,123 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="extra-addons/alquiler.list">
-      <field name="name">extra-addons/alquiler list</field>
-      <field name="model">extra-addons/alquiler.extra-addons/alquiler</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
+  <!--formulario de local-->
+  <record id="local_form_view" model="ir.ui.view">
+    <field name="name">local.form.view</field>
+    <field name="model">alq.local</field>
+    <field name="arch" type="xml">
+      <form string="Local">
+        <sheet>
+          <group>
+            <field name="NLocal"></field>
+            <field name="Area"></field>
+            <field name="Melect"></field>
+            <field name="MeAgua"></field>
+            <field name="piso_id"></field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="extra-addons/alquiler.action_window">
-      <field name="name">extra-addons/alquiler window</field>
-      <field name="res_model">extra-addons/alquiler.extra-addons/alquiler</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
+  <record id="piso_form_view" model="ir.ui.view">
+    <field name="name">piso.form.view</field>
+    <field name="model">alq.piso</field>
+    <field name="arch" type="xml">
+      <form string="Piso">
+        <sheet>
+          <group>
+            <field name="NPiso"></field>
+            <field name="edificio_id"></field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="extra-addons/alquiler.action_server">
-      <field name="name">extra-addons/alquiler server</field>
-      <field name="model_id" ref="model_extra-addons/alquiler_extra-addons/alquiler"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
+  <record id="edificio_form_view" model="ir.ui.view">
+    <field name="name">edificio.form.view</field>
+    <field name="model">alq.edificio</field>
+    <field name="arch" type="xml">
+      <form string="Edificio">
+        <sheet>
+          <group>
+            <field name="NEdificio"></field>
+            <field name="Direccion"></field>
+            <field name="AreaT"></field>
+            <field name="AreaC"></field>
+            <field name="ValorR"></field>
+            <field name="ValorF"></field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
 
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="extra-addons/alquiler" id="extra-addons/alquiler.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="extra-addons/alquiler.menu_1" parent="extra-addons/alquiler.menu_root"/>
-    <menuitem name="Menu 2" id="extra-addons/alquiler.menu_2" parent="extra-addons/alquiler.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="extra-addons/alquiler.menu_1_list" parent="extra-addons/alquiler.menu_1"
-              action="extra-addons/alquiler.action_window"/>
-    <menuitem name="Server to list" id="extra-addons/alquiler" parent="extra-addons/alquiler.menu_2"
-              action="extra-addons/alquiler.action_server"/>
-    -->
-  </data>
+  <!--Tree view-->
+  <record id="local_tree_view" model="ir.ui.view">
+   <field name="name">local.tree.view</field>
+    <field name="model">alq.local</field>
+    <field name="arch" type="xml">
+      <tree string="Locales">
+        <field name="NLocal"></field>
+        <field name="Area"></field>
+        <field name="Melect"></field>
+        <field name="MeAgua"></field>
+      </tree>
+    </field>
+  </record>
+
+  <record id="piso_tree_view" model="ir.ui.view">
+   <field name="name">piso.tree.view</field>
+    <field name="model">alq.piso</field>
+    <field name="arch" type="xml">
+      <tree string="Pisos">
+        <field name="NPiso"></field>
+        <field name="edificio_id"></field>
+      </tree>
+    </field>
+  </record>
+
+  <record id="Edificio_tree_view" model="ir.ui.view">
+   <field name="name">Edificio.tree.view</field>
+    <field name="model">alq.edificio</field>
+    <field name="arch" type="xml">
+      <tree string="Edificios">
+        <field name="NEdificio"></field>
+        <field name="Direccion"></field>
+        <field name="AreaT"></field>
+        <field name="AreaC"></field>
+        <field name="ValorR"></field>
+        <field name="ValorF"></field>
+      </tree>
+    </field>
+  </record>
+
+  <!--accciones-->
+  <record  id="action_local_view" model="ir.actions.act_window">
+    <field name="name">Local</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">alq.local</field>
+    <field name="view_model">tree,form</field>
+  </record>
+
+  <record  id="action_piso_view" model="ir.actions.act_window">
+    <field name="name">Piso</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">alq.piso</field>
+    <field name="view_model">tree,form</field>
+  </record>
+
+  <record  id="action_edificio_view" model="ir.actions.act_window">
+    <field name="name">Edificio</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">alq.edificio</field>
+    <field name="view_model">tree,form</field>
+  </record>
+
+  <!--Menu-->
+  <menuitem id="Alquiler_menu_root" name="Alquier" sequence="1"></menuitem>
+  <menuitem id="Alquiler_Aquiler_category" name="Alquiler" sequence="1" parent="Alquiler_menu_root"></menuitem>
+  <menuitem id="action_alquiler_local_menu" name="Local" sequence="1" parent="Alquiler_Aquiler_category" action="action_local_view"> </menuitem>
+  <menuitem id="action_alquiler_piso_menu" name="Piso" sequence="2" parent="Alquiler_Aquiler_category" action="action_piso_view"></menuitem>
+  <menuitem id="action_alquiler_edificio_menu" name="Edificio" sequence="3" parent="Alquiler_Aquiler_category" action="action_edificio_view"></menuitem>
 </odoo>
