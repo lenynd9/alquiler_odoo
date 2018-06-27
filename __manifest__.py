@@ -6,7 +6,7 @@
         Modulo de alquiler como prueba para el puesto de desarrollador""",
 
     'description': """
-        Como una serie de funciones que fueron mencionadas en las instrucciones
+        Es una serie de funciones que fueron mencionadas en las instrucciones
     """,
 
     'author': "Lenynd Bermudez",
@@ -18,7 +18,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','account_invoicing','account'],
 
     # always loaded
     'data': [
